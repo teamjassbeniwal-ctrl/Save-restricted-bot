@@ -3,7 +3,7 @@
   <img src="https://ibb.co/LDVSztT3" alt="Team JB Save Restricted Bot Logo">
 </p>
 <h1 align="center">
-  VJ Save Restricted Bot
+  Team JB Save Restricted Bot
 </h1>
 
 
