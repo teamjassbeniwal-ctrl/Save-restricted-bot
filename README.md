@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://ibb.co/LDVSztT3" alt="Team JB Save Restricted Bot Logo">
+  <img src="https://i.ibb.co/PsqxZh2d/IMG-20251213-214014-515.jpg" alt="Team JB Save Restricted Bot Logo">
 </p>
 <h1 align="center">
   Team JB Save Restricted Bot
@@ -13,7 +13,7 @@
 
 ---
 
-<b>Watch Video Tutorial - [Click Here](https://youtu.be/@jassbeniwaltech)</b>
+<b>Watch Video Tutorial - [Click Here](https://youtube.com/@jassbeniwaltech)</b>
 
 ---
 
