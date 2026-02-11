@@ -1,6 +1,6 @@
-# Don't Remove Credit Tg - @VJ_Bots
-# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
-# Ask Doubt on telegram @KingVJ01
+# Don't Remove Credit Tg - @TeamJB
+# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@TeamJB
+# Ask Doubt on telegram @TeamJB_Support
 
 import os
 import asyncio 
@@ -10,8 +10,8 @@ from pyrogram.errors import FloodWait, UserIsBlocked, InputUserDeactivated, User
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message 
 from config import API_ID, API_HASH, ERROR_MESSAGE, LOGIN_SYSTEM, STRING_SESSION, CHANNEL_ID, WAITING_TIME
 from database.db import db
-from TechVJ.strings import HELP_TXT
-from bot import TechVJUser
+from TeamJB.strings import HELP_TXT
+from bot import TeamJBUser
 
 class batch_temp(object):
     IS_BATCH = {}
@@ -20,7 +20,6 @@ async def downstatus(client, statusfile, message, chat):
     while True:
         if os.path.exists(statusfile):
             break
-
         await asyncio.sleep(3)
       
     while os.path.exists(statusfile):
@@ -38,7 +37,6 @@ async def upstatus(client, statusfile, message, chat):
     while True:
         if os.path.exists(statusfile):
             break
-
         await asyncio.sleep(3)      
     while os.path.exists(statusfile):
         with open(statusfile, "r") as upread:
@@ -62,10 +60,10 @@ async def send_start(client: Client, message: Message):
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id, message.from_user.first_name)
     buttons = [[
-        InlineKeyboardButton("❣️ Developer", url = "https://t.me/kingvj01")
+        InlineKeyboardButton("❣️ Developer", url = "https://t.me/TeamJB_bot")
     ],[
-        InlineKeyboardButton('🔍 sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ', url='https://t.me/vj_bot_disscussion'),
-        InlineKeyboardButton('🤖 ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ', url='https://t.me/vj_bots')
+        InlineKeyboardButton('🔍 sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ', url='https://t.me/botsupdatesgroup'),
+        InlineKeyboardButton('🤖 ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ', url='https://t.me/teamjb1')
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     await client.send_message(
@@ -98,12 +96,12 @@ async def send_cancel(client: Client, message: Message):
 async def save(client: Client, message: Message):
     # Joining chat
     if ("https://t.me/+" in message.text or "https://t.me/joinchat/" in message.text) and LOGIN_SYSTEM == False:
-        if TechVJUser is None:
+        if TeamJBUser is None:
             await client.send_message(message.chat.id, "String Session is not Set", reply_to_message_id=message.id)
             return
         try:
             try:
-                await TechVJUser.join_chat(message.text)
+                await TeamJBUser.join_chat(message.text)
             except Exception as e: 
                 await client.send_message(message.chat.id, f"Error : {e}", reply_to_message_id=message.id)
                 return
@@ -138,10 +136,10 @@ async def save(client: Client, message: Message):
             except:
                 return await message.reply("**Your Login Session Expired. So /logout First Then Login Again By - /login**")
         else:
-            if TechVJUser is None:
+            if TeamJBUser is None:
                 await client.send_message(message.chat.id, f"**String Session is not Set**", reply_to_message_id=message.id)
                 return
-            acc = TechVJUser
+            acc = TeamJBUser
 				
         batch_temp.IS_BATCH[message.from_user.id] = False
         for msgid in range(fromID, toID+1):
@@ -360,6 +358,6 @@ def get_message_type(msg: pyrogram.types.messages_and_media.message.Message):
         pass
         
 
-# Don't Remove Credit @VJ_Bots
-# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
-# Ask Doubt on telegram @KingVJ01
+# Don't Remove Credit @TeamJB
+# Subscribe YouTube Channel For Amazing Bot @TeamJB
+# Ask Doubt on telegram @TeamJB_Support
