@@ -77,7 +77,7 @@ async def send_start(client: Client, message: Message):
 async def send_help(client: Client, message: Message):
     await client.send_message(
         chat_id=message.chat.id, 
-        text=f"{HELP_TXT}"
+        text=HELP_TXT
     )
 
 # cancel command
@@ -86,7 +86,8 @@ async def send_cancel(client: Client, message: Message):
     batch_temp.IS_BATCH[message.from_user.id] = True
     await client.send_message(
         chat_id=message.chat.id, 
-        text="**Batch Successfully Cancelled.**"
+        text="**Batch Successfully Cancelled.**",
+        reply_to_message_id=message.id
     )
 
 @Client.on_message(filters.text & filters.private)
@@ -150,7 +151,7 @@ async def save(client: Client, message: Message):
                 break
             
             try:
-                # Private channel/group (FIXED - This handles private channels)
+                # Private channel/group - FIXED AND WORKING
                 if "https://t.me/c/" in message.text:
                     chatid = int("-100" + datas[4])
                     try:
@@ -293,6 +294,7 @@ async def handle_private(client: Client, acc, message: Message, chatid, msgid: i
                 os.remove(file)
             except:
                 pass
+            await smsg.delete()
             return
         
         # Start upload status tracker
@@ -310,6 +312,7 @@ async def handle_private(client: Client, acc, message: Message, chatid, msgid: i
                 os.remove(file)
             except:
                 pass
+            await smsg.delete()
             return
         
         # Send media based on type
@@ -436,6 +439,67 @@ async def handle_private(client: Client, acc, message: Message, chatid, msgid: i
         except:
             pass
         
-        # Send success message
+        # Send success message - FIXED: Missing parenthesis was here
         await client.send_message(message.chat.id, f"✅ **Successfully saved message {msgid}**", 
-                                reply_to_message_id
+                                reply_to_message_id=message.id)
+        
+    except Exception as e:
+        if ERROR_MESSAGE == True:
+            await client.send_message(message.chat.id, f"❌ Critical error: {e}", 
+                                    reply_to_message_id=message.id)
+
+# get the type of message
+def get_message_type(msg: pyrogram.types.messages_and_media.message.Message):
+    try:
+        if msg.document:
+            return "Document"
+    except:
+        pass
+
+    try:
+        if msg.video:
+            return "Video"
+    except:
+        pass
+
+    try:
+        if msg.animation:
+            return "Animation"
+    except:
+        pass
+
+    try:
+        if msg.sticker:
+            return "Sticker"
+    except:
+        pass
+
+    try:
+        if msg.voice:
+            return "Voice"
+    except:
+        pass
+
+    try:
+        if msg.audio:
+            return "Audio"
+    except:
+        pass
+
+    try:
+        if msg.photo:
+            return "Photo"
+    except:
+        pass
+
+    try:
+        if msg.text:
+            return "Text"
+    except:
+        pass
+    
+    return None
+
+# Don't Remove Credit @TeamJB
+# Subscribe YouTube Channel For Amazing Bot @TeamJB
+# Ask Doubt on telegram @TeamJB_Support
