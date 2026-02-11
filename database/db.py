@@ -1,6 +1,6 @@
-# Don't Remove Credit @VJ_Bots
-# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
-# Ask Doubt on telegram @KingVJ01
+# Don't Remove Credit @TeamJB
+# Subscribe YouTube Channel For Amazing Bot @TeamJB
+# Ask Doubt on telegram @TeamJB_Support
 
 import motor.motor_asyncio
 from config import DB_NAME, DB_URI
@@ -60,9 +60,9 @@ class Database:
         user = await self.col.find_one({'id': int(id)})
         return user.get('api_hash')
 
-db = Database(DB_URI, "TechVJDemoBot")
+# Updated DB name
+db = Database(DB_URI, "TeamJBDemoBot")
 
-# Don't Remove Credit @VJ_Bots
-# Subscribe YouTube Channel For Amazing Bot @Tech_VJ
-# Ask Doubt on telegram @KingVJ01
-                                       
+# Don't Remove Credit @TeamJB
+# Subscribe YouTube Channel For Amazing Bot @TeamJB
+# Ask Doubt on telegram @TeamJB_Support
