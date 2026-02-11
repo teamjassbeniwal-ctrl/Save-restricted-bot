@@ -24,7 +24,7 @@ ADMINS = int(os.environ.get("ADMINS", "8427230379"))
 # Your Channel Id In Which Bot Upload Downloaded Video/File/Message etc.
 # And Make Your Bot Admin In this channel with full rights.
 # if you don't want to upload in channel then leave it blank don't fill anything.
-CHANNEL_ID = os.environ.get("CHANNEL_ID", "-1002888391802")
+CHANNEL_ID = os.environ.get("CHANNEL_ID", "-1003446501748")
 
 # Your Mongodb Database Url
 # Warning - Give Db uri in deploy server environment variable, don't give in repo.
