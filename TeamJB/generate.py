@@ -1,6 +1,6 @@
-# Don't Remove Credit Tg - @VJ_Bots
-# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
-# Ask Doubt on telegram @KingVJ01
+# Don't Remove Credit Tg - @TeamJB
+# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@TeamJB
+# Ask Doubt on telegram @TeamJB_Support
 
 import traceback
 from pyrogram.types import Message
@@ -44,7 +44,7 @@ async def main(bot: Client, message: Message):
         try:
             api_id = int(api_id_msg.text)
         except ValueError:
-            await api_id_msg.reply("**Api id must be an integer, start your process again by /login**", quote=True, reply_markup=InlineKeyboardMarkup(gen_button))
+            await api_id_msg.reply("**Api id must be an integer, start your process again by /login**", quote=True, reply_markup=InlineKeyboardMarkup([]))
             return
         api_hash_msg = await bot.ask(user_id, "**Now Send Me Your API HASH**", filters=filters.text)
         api_hash = api_hash_msg.text
@@ -58,7 +58,7 @@ async def main(bot: Client, message: Message):
     await phone_number_msg.reply("Sending OTP...")
     try:
         code = await client.send_code(phone_number)
-        phone_code_msg = await bot.ask(user_id, "Please check for an OTP in official telegram account. If you got it, send OTP here after reading the below format. \n\nIf OTP is `12345`, **please send it as** `1 2 3 4 5`.\n\n**Enter /cancel to cancel The Procces**", filters=filters.text, timeout=600)
+        phone_code_msg = await bot.ask(user_id, "Please check for an OTP in official telegram account. If you got it, send OTP here after reading the below format. \n\nIf OTP is `12345`, **please send it as** `1 2 3 4 5`.\n\n**Enter /cancel to cancel The Process**", filters=filters.text, timeout=600)
     except PhoneNumberInvalid:
         await phone_number_msg.reply('`PHONE_NUMBER` **is invalid.**')
         return
@@ -74,7 +74,7 @@ async def main(bot: Client, message: Message):
         await phone_code_msg.reply('**OTP is expired.**')
         return
     except SessionPasswordNeeded:
-        two_step_msg = await bot.ask(user_id, '**Your account has enabled two-step verification. Please provide the password.\n\nEnter /cancel to cancel The Procces**', filters=filters.text, timeout=300)
+        two_step_msg = await bot.ask(user_id, '**Your account has enabled two-step verification. Please provide the password.\n\nEnter /cancel to cancel The Process**', filters=filters.text, timeout=300)
         if two_step_msg.text=='/cancel':
             return await two_step_msg.reply('<b>process cancelled !</b>')
         try:
@@ -86,7 +86,7 @@ async def main(bot: Client, message: Message):
     string_session = await client.export_session_string()
     await client.disconnect()
     if len(string_session) < SESSION_STRING_SIZE:
-        return await message.reply('<b>invalid session sring</b>')
+        return await message.reply('<b>invalid session string</b>')
     try:
         user_data = await db.get_session(message.from_user.id)
         if user_data is None:
@@ -104,6 +104,6 @@ async def main(bot: Client, message: Message):
     await bot.send_message(message.from_user.id, "<b>Account Login Successfully.\n\nIf You Get Any Error Related To AUTH KEY Then /logout first and /login again</b>")
 
 
-# Don't Remove Credit Tg - @VJ_Bots
-# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
-# Ask Doubt on telegram @KingVJ01
+# Don't Remove Credit Tg - @TeamJB
+# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@TeamJB
+# Ask Doubt on telegram @TeamJB_Support
